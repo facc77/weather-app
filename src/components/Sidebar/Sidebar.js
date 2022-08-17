@@ -1,7 +1,6 @@
 import useFetch from '../../hooks/useFetch';
 import './Style.css'
 import Col from 'react-bootstrap/Col';
-import IconoClima from '../../imagenes/HeavyCloud.png'
 import { useQueryContext } from '../../providers/queryProviders';
 
 const Sidebar = () => {
