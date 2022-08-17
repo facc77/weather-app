@@ -1,20 +1,15 @@
 import './App.css';
-import Sidebar from './components/Sidebar';
-import useFetch from './hooks/useFetch';
+import { Sidebar } from './components/Sidebar';
+import { QueryProvider } from './providers/queryProviders';
 
 function App() {
-  const { data, loading, error } = useFetch(
-    'http://api.weatherapi.com/v1',
-    '6be8c28794924ed8a2a184922222905',
-    'tuc',
-  );
-
-  console.log(data, loading, error);
-  return (
-    <div className='App'>
-      <Sidebar />
-    </div>
-  );
+    return (
+        <QueryProvider>
+            <div className='App'>
+                <Sidebar />
+            </div>
+        </QueryProvider>
+    );
 }
 
 export default App;
