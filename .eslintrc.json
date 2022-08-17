@@ -11,7 +11,7 @@
       "jsx": true
     }
   },
-  "extends": ["airbnb-base", "plugin:react/recommended", "prettier"],
+  "extends": ["plugin:react/recommended", "prettier"],
   "plugins": ["react"],
   "rules": {
     "linebreak-style": 0,
@@ -28,10 +28,14 @@
     "prefer-destructuring": "warn",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": [1, { "ignore": ["children"] }],
-    "import/no-extraneous-dependencies": [
-      "warn",
-      { "devDependencies": ["**/*.stories.js", "**/*.spec.js"] }
-    ],
+    // "import/no-extraneous-dependencies": [
+    //   "error",
+    //   {
+    //     "devDependencies": true,
+    //     "optionalDependencies": false,
+    //     "peerDependencies": false
+    //   }
+    // ],
     "import/prefer-default-export": "off"
   },
   "ignorePatterns": ["dist/", "node_modules/", "storybook-static/"],
