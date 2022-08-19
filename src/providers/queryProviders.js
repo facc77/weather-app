@@ -6,7 +6,8 @@ const queryChangeContext = createContext();
 
 export const QueryProvider = ({ children }) => {
     const [query, setQuery] = useState({
-        q: 'buenos aires',
+        q: 'london',
+        input:false,
     });
 
     return (
