@@ -1,0 +1,19 @@
+.searchItem {
+  height: 64px;
+  width: 367px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid transparent;
+  display: flex;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  align-items: center;
+}
+
+.searchItem:hover {
+  border: 1px solid #616475;
+}
+
+.searchItem p {
+  margin: 0;
+}
