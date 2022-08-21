@@ -5,17 +5,16 @@ import {
   useQueryChangeContext,
   useQueryContext,
 } from '../../providers/queryProviders';
+const url = process.env.REACT_APP_API_URL;
+const key = process.env.REACT_APP_API_KEY;
 
 const Sidebar = () => {
   const useQuery = useQueryContext();
   const useChangeQuery = useQueryChangeContext();
 
-  const { data } = useFetch(
-    'http://api.weatherapi.com/v1/current.json',
-    '6be8c28794924ed8a2a184922222905',
-    useQuery.q,
-  );
+  const { data } = useFetch(url, key, useQuery.q);
 
+  console.log(data);
   const handleClick = () => {
     useChangeQuery((prevState) => ({
       ...prevState,
@@ -29,11 +28,11 @@ const Sidebar = () => {
           <div className='boton-buscador'>
             <button onClick={handleClick}>Search for places</button>
           </div>
-          <img src={data?.current?.condition?.icon} className='icono-tiempo' />
-          <span className='temperatura'>{data?.current?.temp_c}°c</span>
-          <div className='condicion'>{data?.current?.condition?.text}</div>
-          <div className='fecha'>{data?.location?.localtime}</div>
-          <div className='ciudad'>{data?.location?.name}</div>
+          <img src={data.current?.condition?.icon} className='icono-tiempo' />
+          <span className='temperatura'>{data.current?.temp_c}°c</span>
+          <div className='condicion'>{data.current?.condition?.text}</div>
+          <div className='fecha'>{data.location?.localtime}</div>
+          <div className='ciudad'>{data.location?.name}</div>
         </>
       ) : (
         <div className='spinner-border text-primary' role='status'>

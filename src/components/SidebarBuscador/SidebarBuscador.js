@@ -40,7 +40,7 @@ const SidebarBuscador = () => {
         </div>
       </form>
       <div className='searchList'>
-        {lugares?.map((lugar, index) => {
+        {lugares?.slice(0, 7).map((lugar, index) => {
           return <LocationItem key={index} lugar={lugar} />;
         })}
       </div>
