@@ -1,24 +1,27 @@
 import { useState } from 'react';
 import Col from 'react-bootstrap/Col';
-import axios from 'axios';
 import { LocationItem } from '../LocationItem';
+import useFetch from '../../hooks/useFetch';
 import './styles.css';
+
+const url = process.env.REACT_APP_SEARCH_URL;
+const key = process.env.REACT_APP_API_KEY;
 
 const SidebarBuscador = () => {
   const [location, setLocation] = useState('');
   const [lugares, setLugares] = useState([]);
+  const [submit, setSubmit] = useState(false);
+  const { data } = useFetch(url, key, location, true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getLugares();
+    setSubmit(true);
   };
 
-  const getLugares = async () => {
-    const res = await axios(
-      `http://api.weatherapi.com/v1/search.json?key=6be8c28794924ed8a2a184922222905&q=${location}`,
-    );
-    setLugares(res.data);
-  };
+  if (submit) {
+    setLugares(data);
+    setSubmit(false);
+  }
 
   return (
     <Col className='SidebarBuscador'>

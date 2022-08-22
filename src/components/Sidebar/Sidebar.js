@@ -5,16 +5,15 @@ import {
   useQueryChangeContext,
   useQueryContext,
 } from '../../providers/queryProviders';
-const url = process.env.REACT_APP_API_URL;
+
+const url = process.env.REACT_APP_WEATHER_URL;
 const key = process.env.REACT_APP_API_KEY;
 
 const Sidebar = () => {
   const useQuery = useQueryContext();
   const useChangeQuery = useQueryChangeContext();
+  const { data } = useFetch(url, key, useQuery.q, true);
 
-  const { data } = useFetch(url, key, useQuery.q);
-
-  console.log(data);
   const handleClick = () => {
     useChangeQuery((prevState) => ({
       ...prevState,
